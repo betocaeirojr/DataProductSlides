@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Fuel Consumption Prediction</title>
+  <meta charset="utf-8">
+  <meta name="description" content="Fuel Consumption Prediction">
+  <meta name="author" content="Alberto Augusto Caeiro Junior">
+  <meta name="generator" content="slidify" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta http-equiv="X-UA-Compatible" content="chrome=1">
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/default.css" media="all" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/phone.css" 
+    media="only screen and (max-device-width: 480px)" >
+  <link rel="stylesheet" href="libraries/frameworks/io2012/css/slidify.css" >
+  <link rel="stylesheet" href="libraries/highlighters/highlight.js/css/tomorrow.css" />
+  <base target="_blank"> <!-- This amazingness opens all links in a new tab. -->  <link rel=stylesheet href="./assets/css/ribbons.css"></link>
+
+  
+  <!-- Grab CDN jQuery, fall back to local if offline -->
+  <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-1.7.min.js"></script>
+  <script>window.jQuery || document.write('<script src="libraries/widgets/quiz/js/jquery.js"><\/script>')</script> 
+  <script data-main="libraries/frameworks/io2012/js/slides" 
+    src="libraries/frameworks/io2012/js/require-1.0.8.min.js">
+  </script>
+  
+  
+
+</head>
+<body style="opacity: 0">
+  <slides class="layout-widescreen">
+    
+    <!-- LOGO SLIDE -->
+        <slide class="title-slide segue nobackground">
+  <hgroup class="auto-fadein">
+    <h1>Fuel Consumption Prediction</h1>
+    <h2>Developing Data Products Final Project Course</h2>
+    <p>Alberto Augusto Caeiro Junior<br/>Sr Software Manager</p>
+  </hgroup>
+  <article></article>  
+</slide>
+    
+
+    <!-- SLIDES -->
+    <slide class="" id="slide-1" style="background:;">
+  <hgroup>
+    <h2>About this Presentation</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>This presentation is intended to pitch the ShinyApp for the course project.</li>
+<li>This presentation intends to predict your&#39;s car fuel consumption (in miles per gallon), using the &#39;mtcars&#39; dataset (included in R) in a regression model using &quot;mpg&quot; as outcome and some of the remaining variables as predictors.</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Generating a model to be used as prediction</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>For this app, we chose to use a simple regression model</li>
+</ul>
+
+<pre><code class="r">data(mtcars)
+fitLRM &lt;- lm(mpg ~ cyl + wt + am + hp + gear, data=mtcars)
+</code></pre>
+
+<ul>
+<li>We build a new dataset with the user input</li>
+</ul>
+
+<pre><code class="r">nds &lt;- data.frame(mpg =&#39;0&#39;, cyl=cylinder, wt = weight/1000, 
+                  am=as.numeric(transmission), hp=horsepower,gear=gears)
+</code></pre>
+
+<ul>
+<li>And a simple prediction algo using the standard &quot;predict&quot; function</li>
+</ul>
+
+<pre><code class="r">predict(fitLRM, newdata=nds)
+</code></pre>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>Predicting your car fuel consumption</h2>
+  </hgroup>
+  <article data-timings="">
+    <ul>
+<li>Since the idea is to predict your car consumption, we present a form where you can input the needed information about your car. This information includes:</li>
+<li>Number of cylinders</li>
+<li>Number of forward gears</li>
+<li>Wether the transmission is automatic or manual</li>
+<li>The car HP</li>
+<li>The car weight (in lbs)</li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+<slide class="class" id="id" style="background:;">
+  <hgroup>
+    <h2>User input screen and prediction output</h2>
+  </hgroup>
+  <article data-timings="">
+    <p><img src="./assets/img/user_screen.jpg" width="100%"></img></p>
+
+<ul>
+<li>For curiosity sake we also can see the relationship among the predictors <br></li>
+<li>You can access the live app at: <a href="https://betocaeirojr.shinyapps.io/FuelPrediction/">https://betocaeirojr.shinyapps.io/FuelPrediction/</a></li>
+<li>You can access the whole project at: <a href="https://github.com/betocaeirojr/DataProducts/tree/master/FuelConsumptionPrediction">https://github.com/betocaeirojr/DataProducts/tree/master/FuelConsumptionPrediction</a></li>
+</ul>
+
+  </article>
+  <!-- Presenter Notes -->
+</slide>
+
+    <slide class="backdrop"></slide>
+  </slides>
+  <div class="pagination pagination-small" id='io2012-ptoc' style="display:none;">
+    <ul>
+      <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=1 title='About this Presentation'>
+         1
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=2 title='Generating a model to be used as prediction'>
+         2
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=3 title='Predicting your car fuel consumption'>
+         3
+      </a>
+    </li>
+    <li>
+      <a href="#" target="_self" rel='tooltip' 
+        data-slide=4 title='User input screen and prediction output'>
+         4
+      </a>
+    </li>
+  </ul>
+  </div>  <!--[if IE]>
+    <script 
+      src="http://ajax.googleapis.com/ajax/libs/chrome-frame/1/CFInstall.min.js">  
+    </script>
+    <script>CFInstall.check({mode: 'overlay'});</script>
+  <![endif]-->
+</body>
+  <!-- Load Javascripts for Widgets -->
+  
+  <!-- LOAD HIGHLIGHTER JS FILES -->
+  <script src="libraries/highlighters/highlight.js/highlight.pack.js"></script>
+  <script>hljs.initHighlightingOnLoad();</script>
+  <!-- DONE LOADING HIGHLIGHTER JS FILES -->
+   
+  </html>
